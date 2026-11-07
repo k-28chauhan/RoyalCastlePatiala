@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #f8f5ef;
+  --color-sand: #d9cdbb;
+  --color-beige: #c9bba6;
+  --color-ink: #2a2522;
+  --color-muted: #8b827a;
+  --color-maroon: #5a1a22;
+  --color-maroon-deep: #3a1016;
+  --color-gold: #b8955a;
+  --color-slate: #6b6a7a;
+
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Jost", system-ui, sans-serif;
+
+  --ease-lux: cubic-bezier(.65, 0, .35, 1);
+}
+
+:root { --gutter: clamp(16px, 4vw, 64px); }
+
+@layer base {
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  body {
+    @apply bg-ivory text-ink font-sans font-light antialiased overflow-x-hidden;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  img, video { @apply block w-full h-full object-cover; }
+  em { @apply italic text-muted; }
+}
+
+/* Small set of repeated primitives; everything else is inline utilities */
+@utility px-gutter { padding-inline: var(--gutter); }
+@utility gap-gutter { gap: var(--gutter); }
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+}
+
+@utility heading {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 1.05;
+  text-align: center;
+}
+
+@utility marker {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 34px;
+  border: 1px solid currentColor;
+  opacity: .5;
+  font-family: var(--font-serif);
+  font-size: 13px;
+}
+
+@layer components {
+  .pill {
+    @apply relative isolate inline-flex items-center justify-center gap-2 overflow-hidden rounded-full border border-ink/25 px-7 py-3 text-[11px] uppercase tracking-[.2em] transition-colors duration-500 ease-lux;
+  }
+  .pill::before {
+    content: "";
+    @apply absolute inset-0 -z-10 translate-y-[101%] rounded-[inherit] bg-ink transition-transform duration-500 ease-lux;
+  }
+  .pill:hover { @apply border-ink text-ivory; }
+  .pill:hover::before { @apply translate-y-0; }
+  .pill-sm { @apply px-5 py-2 text-[10px]; }
+  .pill-light { @apply border-white/50 text-white; }
+  .pill-light::before { @apply bg-white; }
+  .pill-light:hover { @apply border-white text-ink; }
+  .pill-dark { @apply border-maroon bg-maroon text-white; }
+}
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+}

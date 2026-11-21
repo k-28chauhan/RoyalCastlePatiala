@@ -4,7 +4,7 @@ import PhotoWall from '../components/PhotoWall'
 import Contact from '../components/Contact'
 import { palaceGallery, palaceIntro, palaceSpaces } from '../data/content'
 
-const cards: FeatureCard[] = palaceSpaces.map((s) => ({ title: s.title, tag: s.tag, stats: [[...s.stats[0]], [...s.stats[1]]] as FeatureCard['stats'], img: s.img, pos: 'pos' in s ? s.pos : undefined }))
+const cards: FeatureCard[] = palaceSpaces.map((s) => ({ title: s.title, tag: s.tag, img: s.img, pos: 'pos' in s ? s.pos : undefined }))
 
 export default function MarriagePalacePage() {
   return (

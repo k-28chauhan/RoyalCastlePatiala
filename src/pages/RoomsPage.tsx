@@ -7,7 +7,6 @@ import { roomGallery, rooms, roomsIntro } from '../data/content'
 const cards: FeatureCard[] = rooms.map((r) => ({
   title: r.name,
   tag: r.pax,
-  stats: [['Area', r.area.replace(' · ', ' + ')], ['Price', r.price]],
   img: r.img,
 }))
 

@@ -6,8 +6,6 @@ export interface FeatureCard {
   title: string
   /** Small line above the title (guest count, type…). */
   tag: string
-  /** Two label/value pairs shown over the photo, e.g. Area / Price. */
-  stats: [[string, string], [string, string]]
   img: string
   pos?: string
 }
@@ -22,20 +20,11 @@ function Card({ card, flip }: { card: FeatureCard; flip: boolean }) {
     gsap.from('.fc-info', { autoAlpha: 0, y: 40, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: ref.current, start: 'top 70%' } })
   }, { scope: ref })
 
-  const [[l1, v1], [l2, v2]] = card.stats
   return (
     <article ref={ref} className="grid items-center gap-[clamp(24px,6vw,112px)] sm:grid-cols-2">
       <figure data-cursor="View" className={`fc-img group relative aspect-square overflow-hidden ${flip ? 'sm:order-2' : ''}`}>
         <img src={card.img} alt={card.title} style={{ objectPosition: card.pos }} className="transition-transform duration-1200 ease-lux group-hover:scale-108" />
-        <div className="absolute inset-0 bg-[#1e1412]/40" />
         <span aria-hidden="true" className="pointer-events-none absolute inset-[26px] border border-white/45" />
-        <figcaption className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-12 text-center text-white">
-          <small className="text-[13px] tracking-wide opacity-70">{l1}</small>
-          <span className="font-serif text-[clamp(17px,1.9vw,30px)] leading-tight">{v1}</span>
-          <i className="my-4 h-px w-[130px] bg-white/45" />
-          <small className="text-[13px] tracking-wide opacity-70">{l2}</small>
-          <span className="font-serif text-[clamp(20px,2.2vw,34px)] leading-tight">{v2}</span>
-        </figcaption>
       </figure>
       <div className="fc-info flex flex-col items-center gap-5 text-center">
         <span className="text-[11px] tracking-[.3em] opacity-60">{card.tag}</span>
@@ -53,7 +42,7 @@ interface Props {
   cards: FeatureCard[]
 }
 
-/** Alternating photo / text rows. Each photo shows two facts over it with a thin inset border. */
+/** Alternating photo / text rows. Each photo has a thin inset border. */
 export default function FeatureCards({ marker, eyebrow, lines, cards }: Props) {
   return (
     <section id="cards" className="pt-[140px] pb-40">

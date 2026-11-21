@@ -82,13 +82,13 @@ export const stayTypes = [
   { label: 'Marriage Palace', href: '/marriage-palace', img: palace('grand-hall'), bg: '#efd6d6' },
 ]
 
-export interface Room { name: string; pax: string; area: string; price: string; img: string }
+export interface Room { name: string; pax: string; img: string }
 
 export const rooms: Room[] = [
-  { name: 'Deluxe Room', pax: '2 guests', area: '28 m² · garden view', price: 'from ₹4,500', img: media.room1 },
-  { name: 'Premium Room', pax: '2 + 1', area: '34 m² · balcony', price: 'from ₹6,000', img: media.room2 },
-  { name: 'Family Suite', pax: '4 guests', area: '48 m² · lounge', price: 'from ₹9,500', img: media.room3 },
-  { name: 'Royal Bridal Suite', pax: '2 guests', area: '60 m² · private dressing', price: 'from ₹14,000', img: media.room4 },
+  { name: 'Deluxe Room', pax: '2 guests', img: media.room1 },
+  { name: 'Premium Room', pax: '2 + 1', img: media.room2 },
+  { name: 'Family Suite', pax: '4 guests', img: media.room3 },
+  { name: 'Royal Bridal Suite', pax: '2 guests', img: media.room4 },
 ]
 
 // Rooms page
@@ -122,10 +122,10 @@ export const palaceIntro = [
 ]
 
 export const palaceSpaces = [
-  { title: 'The Grand Hall', tag: 'Main hall', stats: [['Capacity', 'Up to 1,500 guests'], ['Setting', 'Chandeliers & floral canopy']], img: palace('grand-hall') },
-  { title: 'Floral Walkway', tag: 'Grand entry', stats: [['Entry', 'Arches of flowers & foliage'], ['Best for', 'Baraat & receptions']], img: palace('arch-red'), pos: 'center 60%' },
-  { title: 'Lounge & Dining', tag: 'Seating', stats: [['Seating', 'Sofa lounges & banquet tables'], ['Best for', 'Cocktails & dinner']], img: palace('lounge') },
-  { title: 'Evening Lawn', tag: 'Open air', stats: [['Capacity', 'Lawn for 600 guests'], ['Setting', 'Lit trees, stage & live counters']], img: palace('lawn-night') },
+  { title: 'The Grand Hall', tag: 'Main hall', img: palace('grand-hall') },
+  { title: 'Floral Walkway', tag: 'Grand entry', img: palace('arch-red'), pos: 'center 60%' },
+  { title: 'Lounge & Dining', tag: 'Seating', img: palace('lounge') },
+  { title: 'Evening Lawn', tag: 'Open air', img: palace('lawn-night') },
 ] as const
 
 /** `pos` is the object-position used when a portrait photo is cropped into the landscape tile. */
